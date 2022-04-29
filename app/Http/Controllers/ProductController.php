@@ -37,10 +37,11 @@ class ProductController extends Controller
         if(request()->Status == 'available' && request()->Stock == 0 )
         {
             // session()->put('error', 'If available must have stock');
-            session()->flash('error', 'If available must have stock');
+            // session()->flash('error', 'If available must have stock');
             return redirect()
                 ->back()
-                ->withInput(request()->all());
+                ->withInput(request()->all())
+                ->withErrors('If available must have stock');
         }
         // session()->forget('error');
         // dd(request());
@@ -56,8 +57,10 @@ class ProductController extends Controller
         // return $product;
         // return redirect()->back();
         // return redirect()->action('MainController@index');
-        session()->flash('success', "The new product with id $product->id was created");
-        return redirect()->route('products.index');
+        // session()->flash('success', "The new product with id $product->id was created");
+        return redirect()->route('products.index')
+        ->withSuccess("The new product with id $product->id was created");
+        // ->with(['Success' => 'XXXXXX']);
     }
 
     public function show($product)
@@ -90,7 +93,8 @@ class ProductController extends Controller
         $product = Product::findOrFail($product);
         $product->update(request()->all());
         // return $product;
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+        ->withSuccess("The product with id $product->id was edit");
     }
 
     public function distroy($product)
@@ -99,7 +103,8 @@ class ProductController extends Controller
         $product = Product::findOrFail($product);
         $product->delete();
         // return $product;
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+        ->withSuccess("The product with id $product->id was deleted");
     }
 
 

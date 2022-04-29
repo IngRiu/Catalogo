@@ -8,11 +8,11 @@
 <body>
 	{{-- @dump($errors) --}}
 
-	@if(session()->has('error'))
+	{{-- @if(session()->has('error'))
 	<div class="alert alert-danger">
 		{{session()->get('error')}}
 	</div>
-	@endif
+	@endif --}}
 
 	@if(session()->has('success'))
 	<div class="alert alert-success">
