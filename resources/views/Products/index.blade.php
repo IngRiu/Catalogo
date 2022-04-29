@@ -1,6 +1,6 @@
-@extends('Layouts.Master')
+@extends('Layouts.app')
 @section('content')
-<a href="{{ route('products.create') }}">New</a>
+<a href="{{ route('products.create') }}" class="btn btn-success mb-3">Create</a>
 	@empty($products)
 	<div>
 		No hay datos en la tabla
@@ -32,10 +32,10 @@
 						<td>
 							<a href="{{ route('products.show',[$product->id]) }}">Show</a>
 							<a href="{{ route('products.edit',['product'=>$product->id]) }}">Edit</a>
-							<form method="POST" action="{{ route('products.distroy',['product'=>$product->id]) }}">
+							<form method="POST" class="d-inline" action="{{ route('products.distroy',['product'=>$product->id]) }}">
 								@csrf
 								@method('DELETE')
-								<button type="submit" class="btn btn-danger">Eliminar</button>
+								<button type="submit" class="btn btn-link">Delete</button>
 							</form>
 						</td>
 					</tr>

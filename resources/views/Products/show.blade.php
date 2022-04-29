@@ -1,4 +1,4 @@
-@extends('Layouts.Master')
+@extends('Layouts.app')
 @section('content')
 	<h1>{{$product->Title}} {{$product-> id}}</h1>
 	<p>{{$product->Description}}</p>
