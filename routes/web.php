@@ -17,32 +17,30 @@ Route::get('/','MainController@index')->name('main');
 // Route::get('/', function () {
 //     return view('welcome');
 // })->name('main');
+// 
+Route::resource('products','ProductController');
+// Route::resource('products','ProductController')->only(['index','show','create']);
+// Route::resource('products','ProductController')->except(['index','show','create']); 
 
-Route::get('products','ProductController@index')->name('products.index');
 
-Route::get('products/create','ProductController@create')->name('products.create');
+// Route::get('products','ProductController@index')->name('products.index');
 
-Route::post('products','ProductController@store')->name('products.store');
+// Route::get('products/create','ProductController@create')->name('products.create');
 
-Route::get('products/{product}','ProductController@show')->name('products.show');
+// Route::post('products','ProductController@store')->name('products.store');
 
-Route::get('products/{product}/edit','ProductController@edit')->name('products.edit');
+// Route::get('products/{product}','ProductController@show')->name('products.show');
+// // Route::get('products/{product:Title}','ProductController@show')->name('products.show');
 
-Route::match(['put','patch'],'products/{product}','ProductController@update')->name('products.update');
+// Route::get('products/{product}/edit','ProductController@edit')->name('products.edit');
 
-Route::delete('products/{product}','ProductController@distroy')->name('products.distroy'); 
-Auth::routes();
+// Route::match(['put','patch'],'products/{product}','ProductController@update')->name('products.update');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::delete('products/{product}','ProductController@destroy')->name('products.destroy'); 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

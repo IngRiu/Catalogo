@@ -20,7 +20,7 @@
 			<label>Stock</label>
 			<input type="number" name="Stock" value="{{ old('Stock') ?? $product->Stock}}" class="form-control" min="0"  required>
 		</div>
-		<div class="form-row">
+		<div class="custom-select">
 			<label>Status</label>
 			<select name="Status" class="custom-select" required>
 				<option {{ old('Status') == 'available' ? 'selected' : ($product->Status == 'available' ? 'selected' : '')}} value="available">available</option>

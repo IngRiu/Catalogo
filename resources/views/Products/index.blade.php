@@ -30,9 +30,10 @@
 						<td>{{$product->Stock}}</td>
 						<td>{{$product->Status}}</td>
 						<td>
+							{{-- <a href="{{ route('products.show',[$product->Title]) }}">Show</a> --}}
 							<a href="{{ route('products.show',[$product->id]) }}">Show</a>
 							<a href="{{ route('products.edit',['product'=>$product->id]) }}">Edit</a>
-							<form method="POST" class="d-inline" action="{{ route('products.distroy',['product'=>$product->id]) }}">
+							<form method="POST" class="d-inline" action="{{ route('products.destroy',['product'=>$product->id]) }}">
 								@csrf
 								@method('DELETE')
 								<button type="submit" class="btn btn-link">Delete</button>
