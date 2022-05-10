@@ -1,0 +1,35 @@
+[33mcommit 16b1adb9701ce827b8480a0af0cc8c9b7595b339[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: IngRiu <urielaybarhernandez@gmail.com>
+Date:   Tue May 10 14:08:56 2022 -0500
+
+    Usando FormRequest de Laravel para validar datos
+
+[33mcommit 5d7004d6195a86b1900826cb68894419ded1b9c1[m
+Author: IngRiu <urielaybarhernandez@gmail.com>
+Date:   Fri Apr 29 22:38:58 2022 -0500
+
+    Uso de FormRequest en laravel para validar datos
+
+[33mcommit 47f8c876b95dbaa3a7ac12685c48d3f84a48cd97[m
+Author: IngRiu <urielaybarhernandez@gmail.com>
+Date:   Fri Apr 29 19:00:28 2022 -0500
+
+    middleware y restricciones de acceso en laravel
+
+[33mcommit 7ab7df081725da7ab054e207e888eea36e54e3c0[m
+Author: IngRiu <urielaybarhernandez@gmail.com>
+Date:   Thu Apr 28 23:08:46 2022 -0500
+
+    Agregando laravel mix
+
+[33mcommit 62cbc7b2a6b0f53b216fc65cddeb6ed8064363b8[m
+Author: IngRiu <urielaybarhernandez@gmail.com>
+Date:   Thu Apr 28 22:03:00 2022 -0500
+
+    Mensajes globales de error y de excito
+
+[33mcommit 57f2287de25f560894482770633e327e022b9fd1[m
+Author: Uriel <jose.uriel.com@gmail.com>
+Date:   Thu Apr 28 19:42:57 2022 -0500
+
+    Se agrega el proyecto
