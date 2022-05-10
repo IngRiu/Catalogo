@@ -32,7 +32,7 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        dd($request);
+        // dd($request);
         // $rules =[
         //     'Title' => ['required','max:255'],
         //     'Description' => ['required', 'max:1000'],
@@ -43,19 +43,20 @@ class ProductController extends Controller
         // request()->validate($rules);
 
 
-        if(request()->Status == 'available' && request()->Stock == 0 )
-        {
-            // session()->put('error', 'If available must have stock');
-            // session()->flash('error', 'If available must have stock');
-            return redirect()
-                ->back()
-                ->withInput(request()->all())
-                ->withErrors('If available must have stock');
-        }
+        // if($request->Status == 'available' && $request->Stock == 0 )
+        // {
+        //     // session()->put('error', 'If available must have stock');
+        //     // session()->flash('error', 'If available must have stock');
+        //     return redirect()
+        //         ->back()
+        //         ->withInput($request->all())
+        //         ->withErrors('If available must have stock');
+        // }
+        // dd(request()->all(), $request->all(), $request->validated());
         // session()->forget('error');
         // dd(request());
         // 
-        $product = Product::create(request()->all());
+        $product = Product::create($request->validated());
         // $product = Product::create([
         //     'Title'=>request()->Title,
         //     'Description'=>request()->Description,
@@ -91,19 +92,19 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(Product $product)
+    public function update(ProductRequest $request,Product $product)
     {
-        $rules =[
-            'Title' => ['required','max:255'],
-            'Description' => ['required', 'max:1000'],
-            'Price' => ['required','min:1'],
-            'Stock'=>['required', 'min:0'],
-            'Status'=>['required','in:available,unavailable'],
-        ];
-        request()->validate($rules);
+        // $rules =[
+        //     'Title' => ['required','max:255'],
+        //     'Description' => ['required', 'max:1000'],
+        //     'Price' => ['required','min:1'],
+        //     'Stock'=>['required', 'min:0'],
+        //     'Status'=>['required','in:available,unavailable'],
+        // ];
+        // request()->validate($rules);
         // dd(request());
         // $product = Product::findOrFail($product);
-        $product->update(request()->all());
+        $product->update($request->validated());
         // return $product;
         return redirect()
             ->route('products.index')

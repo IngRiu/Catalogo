@@ -31,4 +31,13 @@ class ProductRequest extends FormRequest
             'Status'=>['required','in:available,unavailable'],
         ];
     }
+    public function withValidator($validator)
+    {
+        $validator->after(function($validator){
+            if($this->Status == 'available' && $this->Stock == 0 )
+            {
+                $validator->errors()->add('Stock', 'If available must have stock');
+            }
+        });
+    }
 }
