@@ -12,8 +12,10 @@ class MainController extends Controller
         // return view('welcome')->whit([
         //     'products'=>Product::all(),
         // ]);
+        $products =Product::available()->get();
+
         return view('welcome')->with([
-            'products'=>Product::all(),
+            'products'=> $products,
         ]);
     }
 }
