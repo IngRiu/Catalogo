@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Services\CartService;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -14,6 +15,7 @@ class OrderController extends Controller
     public function __construct(CartService $cartService)
     {
         $this->cartService = $cartService;
+        $this->middleware('auth');//->only('store');
     }
     /**
      * Show the form for creating a new resource.
@@ -41,8 +43,25 @@ class OrderController extends Controller
      * @param  \App\Http\Requests\StoreOrderRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreOrderRequest $request)
+    public function store(Request $request)
     {
-        //
+        $user = $request->user();
+        // dd($user);
+        $order = $user->orders()->create([
+            'status' => 'pending',
+        ]);
+        $cart = $this->cartService->getFromCookie();
+
+        $cartProductsWithQuantity = $cart
+            ->products
+            ->mapWithKeys(function($product){
+                $element[$product->id]=['quantity' => $product->pivot->quantity];
+
+                return $element;
+            });
+
+        //dd($cartProductsWithQuantity);
+
+        $order->products()->attach($cartProductsWithQuantity->toArray());
     }
 }

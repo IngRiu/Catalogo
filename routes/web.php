@@ -24,7 +24,7 @@ Route::resource('products.carts','ProductCartController')->only(['store','destro
 
 Route::resource('carts','CartController')->only(['index']);
 
-Route::resource('orders','OrderController')->only(['create','store']);
+Route::resource('orders','OrderController')->only(['create', 'store']);
 
 // Route::resource('products','ProductController')->only(['index','show','create']);
 // Route::resource('products','ProductController')->except(['index','show','create']); 
