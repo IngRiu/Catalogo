@@ -1,11 +1,12 @@
 <div class="card">
 	<img class="card-img-top" src="{{ asset($product->images->first()->path) }}" height="500">
 	<div class="card-body">
-		<h4 class="text-right"><strong>${{ $product->Price }}</strong></h4>
+		<h4 class="text-right"><strong> $ {{ $product->Price }}</strong></h4>
 		<h5 class="card-title">{{ $product->Title }}</h5>
 		<p class="card-text">{{ $product->Description }}</p>
 		<p class="card-text"><strong>{{ $product->Stock }} left </strong></p>
 		@if(isset($cart))
+			<p class="card-text">{{ $product->pivot->quantity }} in your car <strong>(${{ $product->total }})</strong></p>
 			<form 
 			method="POST" 
 			action="{{ route('products.carts.destroy',['cart' => $cart->id, 'product' => $product->id]) }}" 
