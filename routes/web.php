@@ -26,6 +26,8 @@ Route::resource('carts','CartController')->only(['index']);
 
 Route::resource('orders','OrderController')->only(['create', 'store']);
 
+Route::resource('orders.payments','OrderPaymentController')->only(['create','store']);
+
 // Route::resource('products','ProductController')->only(['index','show','create']);
 // Route::resource('products','ProductController')->except(['index','show','create']); 
 

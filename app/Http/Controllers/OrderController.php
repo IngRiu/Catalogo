@@ -63,5 +63,7 @@ class OrderController extends Controller
         //dd($cartProductsWithQuantity);
 
         $order->products()->attach($cartProductsWithQuantity->toArray());
+
+        return redirect()->route('orders.payments.create', ['order' => $order]);
     }
 }
