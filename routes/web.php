@@ -18,7 +18,7 @@ Route::get('/','MainController@index')->name('main');
 //     return view('welcome');
 // })->name('main');
 // 
-Route::resource('products','ProductController');
+// Route::resource('products','ProductController');
 
 Route::resource('products.carts','ProductCartController')->only(['store','destroy']);
 

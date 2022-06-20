@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Panel;
 
+// use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use App\Http\Requests\ProductRequest;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');//->except(['index','create']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');//->except(['index','create']);
+    // }
 
     public function index()
     {
