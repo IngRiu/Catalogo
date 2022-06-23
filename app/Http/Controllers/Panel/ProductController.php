@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Panel;
 
 // use App\Http\Controllers\Controller;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
-
+use App\Scopes\AvailableScope;
 
 class ProductController extends Controller
 {
@@ -19,14 +19,15 @@ class ProductController extends Controller
     public function index()
     {
         return view('Products.index')->with([
-            'products'=>Product::all(),
+            'products' => Product::withoutGlobalScope(AvailableScope::class)->get(),
+            // 'products'=>Product::all(),
         ]);
     }
 
     public function create()
     {
         // return 'Formulario para crear productos';
-        // 
+        //
         return view('Products.create');
         // return 'hola';
     }
@@ -56,7 +57,7 @@ class ProductController extends Controller
         // dd(request()->all(), $request->all(), $request->validated());
         // session()->forget('error');
         // dd(request());
-        // 
+        //
         $product = Product::create($request->validated());
         // $product = Product::create([
         //     'Title'=>request()->Title,
