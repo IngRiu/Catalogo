@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         return view('Products.index')->with([
-            'products' => PanelProduct::all(),
+            'products' => PanelProduct::without('images')->get(),
             // 'products' => PanelProduct::withoutGlobalScope(AvailableScope::class)->get(),
             // 'products'=>Product::all(),
         ]);
