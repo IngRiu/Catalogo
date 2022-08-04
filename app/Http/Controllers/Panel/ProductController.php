@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 // use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
-use App\Models\Product;
+use App\Models\PanelProduct;
 use App\Scopes\AvailableScope;
 
 class ProductController extends Controller
@@ -19,7 +19,8 @@ class ProductController extends Controller
     public function index()
     {
         return view('Products.index')->with([
-            'products' => Product::withoutGlobalScope(AvailableScope::class)->get(),
+            'products' => PanelProduct::all(),
+            // 'products' => PanelProduct::withoutGlobalScope(AvailableScope::class)->get(),
             // 'products'=>Product::all(),
         ]);
     }
@@ -58,7 +59,7 @@ class ProductController extends Controller
         // session()->forget('error');
         // dd(request());
         //
-        $product = Product::create($request->validated());
+        $product = PanelProduct::create($request->validated());
         // $product = Product::create([
         //     'Title'=>request()->Title,
         //     'Description'=>request()->Description,
@@ -75,7 +76,7 @@ class ProductController extends Controller
         // ->with(['Success' => 'XXXXXX']);
     }
 
-    public function show(Product $product)
+    public function show(PanelProduct $product)
     {
         return view('Products.show')->with([
             'product'=> $product,
@@ -86,7 +87,7 @@ class ProductController extends Controller
         //return "Mostrando el id {$product}";
     }
 
-    public function edit(Product $product)
+    public function edit(PanelProduct $product)
     {
         // return "Formulario donde se editara el producto {$product}";
         return view('Products.edit')->with([
@@ -94,7 +95,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(ProductRequest $request,Product $product)
+    public function update(ProductRequest $request,PanelProduct $product)
     {
         // $rules =[
         //     'Title' => ['required','max:255'],
@@ -113,7 +114,7 @@ class ProductController extends Controller
             ->withSuccess("The product with id $product->id was edited");
     }
 
-    public function destroy(Product $product)
+    public function destroy(PanelProduct $product)
     {
         // dd($product);
         // $product = Product::findOrFail($product);
