@@ -49,7 +49,7 @@ Route::resource('orders.payments','OrderPaymentController')->only(['create','sto
 
 
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
