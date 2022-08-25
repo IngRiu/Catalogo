@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -18,8 +19,20 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function update()
+    public function update(ProfileRequest $request)
     {
+        $user =  $request->user();
+        $user->fill($request->validated());
+        if($user->isDirty('email'))
+        {
+            $user->email_verified_at = null;
+            $user->sendEmailVerificationNotification();
+        }
+        // dd($user);
+        $user->save();
 
+        return redirect()
+            ->route('profile.edit')
+            ->withSuccess('Profile edit');
     }
 }
