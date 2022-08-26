@@ -38,7 +38,8 @@ class ProfileController extends Controller
             {
                 if($user->image != null)
                 {
-                    Storage::disk('images')->delete($user->image->path);
+                    \Storage::disk('images')->delete($user->image->path);
+                    // Storage::disk('images')->delete($user->image->path);
                     $user->image->delete();
                 }
                 $user->image()->create([
