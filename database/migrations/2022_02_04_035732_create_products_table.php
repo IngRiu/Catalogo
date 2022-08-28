@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->float('Price')->unsigned();
             $table->integer('Stock')->unsigned();
             $table->string('Status')->default('unavailable');
+            $table->SoftDeletes();
             $table->timestamps();
         });
     }
