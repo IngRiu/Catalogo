@@ -36,7 +36,8 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
 
-        dd($request->validated());
+
+        // dd($request->validated());
         // dd($request);
         // $rules =[
         //     'Title' => ['required','max:255'],
@@ -62,6 +63,14 @@ class ProductController extends Controller
         // dd(request());
         //
         $product = PanelProduct::create($request->validated());
+
+        foreach ($request->images as $image) {
+            $product->images()->create([
+                'path' => 'images/'  .$image->store('products', 'images'),
+            ]);
+        }
+
+
         // $product = Product::create([
         //     'Title'=>request()->Title,
         //     'Description'=>request()->Description,
@@ -99,7 +108,8 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request,PanelProduct $product)
     {
-        dd($request->validated());
+
+        // dd($request->validated());
         // $rules =[
         //     'Title' => ['required','max:255'],
         //     'Description' => ['required', 'max:1000'],
@@ -111,6 +121,21 @@ class ProductController extends Controller
         // dd(request());
         // $product = Product::findOrFail($product);
         $product->update($request->validated());
+
+        if($request->hasFile('images'))
+        {
+            foreach($product->images as $image){
+                $path = storage_path("app/public/{$image->path}");
+                \File::delete($path);
+                $image->delete();
+            }
+            foreach ($request->images as $image) {
+                $product->images()->create([
+                    'path' => 'images/'  .$image->store('products', 'images'),
+                ]);
+            }
+        }
+
         // return $product;
         return redirect()
             ->route('products.index')
