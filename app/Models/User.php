@@ -44,6 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'admin_since' => 'datetime',
     ];
 
     /**
@@ -51,9 +52,9 @@ class User extends Authenticatable implements MustVerifyEmail
     *
     *@var array
     */
-    protected $dates = [
-        'admin_since',
-    ];
+    // protected $dates = [
+    //     'admin_since',
+    // ];
     public function orders()
     {
         return $this->hasMany(Order::class, 'customer_id');
