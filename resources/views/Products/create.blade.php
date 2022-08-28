@@ -1,7 +1,11 @@
 @extends('Layouts.app')
 @section('content')
 	<h1>Create new product</h1>
-	<form method="POST" action="{{ route('products.store') }}">
+	<form 
+	method="POST" 
+	action="{{ route('products.store') }}"
+	enctype="multipart/form-data"
+	>
 		@csrf
 		<div class="form-row">
 			<label>Title</label>
@@ -28,6 +32,18 @@
 				<option {{ old('Status') == 'unavailable' ? 'selected'  : '' }} value="unavailable">Unavailable</option>
 			</select>
 		</div>
+		<div class="form-row">
+            <label>
+            	{{ __('Images') }}
+            </label>
+            
+            <div class="custom-file">
+                <input type="file" accept="image/*" name="images[]" class="custom-file-input" multiple>
+                <label class="custom-file-label">
+                    Product images...
+                </label>
+            </div>
+        </div>
 		<div class="form-row">
 			<button type="submit" class="btn btn-primary btn-lg mt-3">Create Product</button>
 		</div>

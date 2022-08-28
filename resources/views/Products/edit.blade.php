@@ -1,7 +1,11 @@
 @extends('Layouts.app')
 @section('content')
 	<h1>Edit Product</h1>
-	<form method="POST" action="{{ route('products.update', ['product' => $product->id]) }}">
+	<form 
+		method="POST"
+		action="{{ route('products.update', ['product' => $product->id]) }}"
+		enctype="multipart/form-data"
+	>
 		@csrf
 		@method('PUT')
 		<div class="form-row">
@@ -27,6 +31,18 @@
 				<option {{ old('Status') == 'unavailable' ? 'selected' : ($product->Status == 'unavailable' ? 'selected' : '')}} value="unavailable">unavailable</option>
 			</select>
 		</div>
+		<div class="form-row">
+            <label>
+            	{{ __('Images') }}
+            </label>
+            
+            <div class="custom-file">
+                <input type="file" accept="image/*" name="images[]" class="custom-file-input" multiple>
+                <label class="custom-file-label">
+                    Product images...
+                </label>
+            </div>
+        </div>
 		<div class="form-row mt-3">
 			<button type="submit" class="btn btn-primary btn-lg">Editar</button>
 		</div>

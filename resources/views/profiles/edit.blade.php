@@ -61,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-end">
                             	{{ __('Image') }}
                             </label>

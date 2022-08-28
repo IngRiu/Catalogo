@@ -29,6 +29,7 @@ class ProductRequest extends FormRequest
             'Price' => ['required','min:1'],
             'Stock'=>['required', 'min:0'],
             'Status'=>['required','in:available,unavailable'],
+            'images.*'=>['nullable','image'],
         ];
     }
     public function withValidator($validator)

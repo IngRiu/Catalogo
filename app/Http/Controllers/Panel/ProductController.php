@@ -35,6 +35,8 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
+
+        dd($request->validated());
         // dd($request);
         // $rules =[
         //     'Title' => ['required','max:255'],
@@ -97,6 +99,7 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request,PanelProduct $product)
     {
+        dd($request->validated());
         // $rules =[
         //     'Title' => ['required','max:255'],
         //     'Description' => ['required', 'max:1000'],
